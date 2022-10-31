@@ -1,8 +1,3 @@
----
-layout: page
-title: About Me
-permalink: /about
----
 # About Me
 I've been a Linux enthusiast for around 5 years now (as of 2022). It all started when my first Raspberry Pi for a birthday. I remember being so excited to use it, I heard that you could do so much with it! I was dumbfounded when I installed Raspbian and had to use the command line. Fast forward 5 years, and now I do it on all of my machines on the desktop - for fun, no less!
 
