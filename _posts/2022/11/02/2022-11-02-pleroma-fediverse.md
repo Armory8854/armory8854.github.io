@@ -159,14 +159,22 @@ Make sure before you save your crontab, you hit enter 1 more time to have a blan
 
 For Fediverse examples I'm going to install Pleroma [^2]. Take my step-by-step instructions with a grain of salt - and please, [Read The Docs!](https://docs.pleroma.social/backend/installation/otp_en/). This is a project updating often, and some steps may change.
 
-## Notes
-1. Default shell for pleroma user is bad. Default user needs pass
-    - Default password for postgres needs set as well
-2. Postgres is now version 14
-3. Ubuntu 20 needs this program added & installed
-    - wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
-    - sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
-	- Add something for systemd error handling
+## Basic Differences Between My Installation & The Docs
+OK - so after installing this software, I realized there were quite a few things that needed changed. 
+
+- If you followed this guide so far and created a new user to run sudo commands instead of running commands as root, you need to prefix every command the guide asks you to run with sudo.
+- First off, they assign default users in this guide to a shell that gives no output. I suspect they did this for security reasons (the host account has no shell to exploit), but the end result for me was that every command they wanted me to switch users resulted in an error. Therefore, anytime in the guide you see useradd and they assign a user like this: `adduser ... --shell /bin/false` change the `--shell` to `/bin/bash`. 
+    - There is a chance something was wrong with my setup - you could always try to just use their shell variable and see if it works for you first, then change the users default shell later.
+- If you decide to install the postgres RUM plugins like the guide suggests as optional, make sure to check your postgres version first.
+    - At the time of writing, this was 14, and the guide suggested version 11 as the version to install.
+- I did not capture the specific error, but you *may* get an error involving libssl / openssl / crypto something or other when runngin `pleroma start` for the first time. If you do, this is because of a requirement for an old libssl version. The solution for me was this Stackoverflow thread [^4]. To condense what I did, I ran the following commands:
+    ```
+	cd
+	wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb`
+    sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
+	rm libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
+	```
+
 
 # Footnotes
 [^1]: https://ubuntu.com/blog/what-is-an-ubuntu-lts-release
@@ -174,3 +182,5 @@ For Fediverse examples I'm going to install Pleroma [^2]. Take my step-by-step i
 [^2]: https://pleroma.social
 
 [^3]: https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+
+[^4]: https://stackoverflow.com/questions/72133316/ubuntu-22-04-libssl-so-1-1-cannot-open-shared-object-file-no-such-file-or-di
