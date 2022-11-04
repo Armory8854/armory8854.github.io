@@ -138,6 +138,20 @@ And then visit your domain. You should see this screen:
 
 If you do, you can continue installing Certbot. If you don't, you need to update your DNS settings as mentioned previously.
 
+Now that you've done this, go ahead and run the install instructions here [^3], then run and install your ssl certificate! **Make sure to enter a valid email address when it asks - it will remind you when to renew your cert.**  When it asks you for what domains to get a cert for, make sure to enter it like this.
+
+`yourdomain.com www.yourdomain.com`
+
+After that, there's one final step: Setting up your certificate to automatically renew! run the following command to modify the `root` users crontab
+
+`sudo crontab -e`
+
+If it asks you for an editor to choose, roll with nano, unless you know what you are doing. We need to reset the certificate at least once every 3 months, I would say once every 2 months and 15 days is sufficient. 
+
+`0 0 15 2 * certbot renew`
+
+Make sure before you save your crontab, you hit enter 1 more time to have a blank new line at the end of the file. I'm not 100% sure why this is required, but your crontab will not save if it's not set.
+
 # Pleroma
 ![The homepage of Pleroma at the time of writing. It features the title of the app, and a homescreen showcasing the User Interface design.](/assets/images/pleromahome.jpg)
 
@@ -145,7 +159,18 @@ If you do, you can continue installing Certbot. If you don't, you need to update
 
 For Fediverse examples I'm going to install Pleroma [^2]. Take my step-by-step instructions with a grain of salt - and please, [Read The Docs!](https://docs.pleroma.social/backend/installation/otp_en/). This is a project updating often, and some steps may change.
 
+## Notes
+1. Default shell for pleroma user is bad. Default user needs pass
+    - Default password for postgres needs set as well
+2. Postgres is now version 14
+3. Ubuntu 20 needs this program added & installed
+    - wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
+    - sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
+	- Add something for systemd error handling
+
 # Footnotes
 [^1]: https://ubuntu.com/blog/what-is-an-ubuntu-lts-release
 
 [^2]: https://pleroma.social
+
+[^3]: https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
