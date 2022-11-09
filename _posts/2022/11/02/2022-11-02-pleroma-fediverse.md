@@ -1,6 +1,8 @@
 ---
 title: Setting Up Pleroma - I Join The Fediverse!
+layout: default
 date: 2022-11-02
+tags: linux-server fediverse self-hosting
 ---
 # Introduction
 Due to the state of the internet in 2022, and the gradual decline in both quality of the internet & websites over the last 10-20 years, I'm going to host a fediverse instance, and try to maintain it as long as I can. For a domain, I am going with namecheap. I'm also going to be using Namecheap's DNS for the time being. For the server, I'm going to be using Digital Ocean and use a Ubuntu 22.04 base. Normally, I'd just use Debian, but I'm going to stick with Ubuntu for the sake of following a guide to a T.
@@ -35,7 +37,9 @@ This should prompt you to reset some services, just hit tab and click OK. It may
 Before doing anything else, you should create a new user that has sudo rights.
 From here on out, `user` is the username you decide to pick. First, use the `useradd` command to create a new user:
 
-`useradd -d /home/user -s /bin/bash user`
+{% highlight shell %}
+useradd -d /home/user -s /bin/bash user
+{% endhighlight %}
 
 You may be wondering why I specified the shell to be /bin/bash. This is because some VPS providers have a really barebones skeleton (pun very intended) template for creating new users. Having a new user without the bash shell at the very least makes operating the system very difficult.
 
@@ -174,6 +178,8 @@ OK - so after installing this software, I realized there were quite a few things
     sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
 	rm libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
 	```
+
+## Configuration
 
 
 # Footnotes

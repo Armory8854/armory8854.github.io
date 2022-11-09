@@ -2,6 +2,7 @@
 layout: post
 title: "Custom Mouse Button Bindings With xinput"
 date: 2022-10-31
+tags: linux-desktop gentoo
 ---
 # Introduction
 I use my Kensington Expert Pro Trackball, [Seen Here](https://www.kensington.com/p/products/electronic-control-solutions/trackball-products/expert-mouse-wired-trackball/), on my Gentoo installation on my iMac. This has 4 buttons on it which are programmable for various functions, like copying / pasting / back and forward button navigation in browsers. The main problem that I'm having now is that only 1 of the extra buttons besides left, and right, click works. And that only goes back in a browser. If I want to change the functions of these buttons on linux, I am faced with 2 problems. These 2 problems are:
