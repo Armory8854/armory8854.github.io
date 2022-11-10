@@ -1,5 +1,5 @@
 ---
-title: Setting Up Pleroma - I Join The Fediverse!
+title: Setting Up Pleroma - Part 1: I Join The Fediverse!
 layout: default
 date: 2022-11-02
 tags: linux-server fediverse self-hosting
@@ -161,13 +161,13 @@ Make sure before you save your crontab, you hit enter 1 more time to have a blan
 
 *The homepage of Pleroma at the time of writing*
 
-For Fediverse examples I'm going to install Pleroma [^2]. Take my step-by-step instructions with a grain of salt - and please, [Read The Docs!](https://docs.pleroma.social/backend/installation/otp_en/). This is a project updating often, and some steps may change.
+For my Fediverse client, I'm going to install Pleroma [^2]. Take my step-by-step instructions with a grain of salt - and please, [Read The Docs!](https://docs.pleroma.social/backend/installation/otp_en/). This is a project updating often, and some steps may change.
 
 ## Basic Differences Between My Installation & The Docs
 OK - so after installing this software, I realized there were quite a few things that needed changed. 
 
 - If you followed this guide so far and created a new user to run sudo commands instead of running commands as root, you need to prefix every command the guide asks you to run with sudo.
-- First off, they assign default users in this guide to a shell that gives no output. I suspect they did this for security reasons (the host account has no shell to exploit), but the end result for me was that every command they wanted me to switch users resulted in an error. Therefore, anytime in the guide you see useradd and they assign a user like this: `adduser ... --shell /bin/false` change the `--shell` to `/bin/bash`. 
+- They assign default users in this guide to a shell that gives no output. I suspect they did this for security reasons (the host account has no shell to exploit), but the end result for me was that every command they wanted me to switch users resulted in an error. Therefore, anytime in the guide you see useradd and they assign a user like this: `adduser ... --shell /bin/false` change the `/bin/false` to `/bin/bash`. 
     - There is a chance something was wrong with my setup - you could always try to just use their shell variable and see if it works for you first, then change the users default shell later.
 - If you decide to install the postgres RUM plugins like the guide suggests as optional, make sure to check your postgres version first.
     - At the time of writing, this was 14, and the guide suggested version 11 as the version to install.
@@ -179,8 +179,8 @@ OK - so after installing this software, I realized there were quite a few things
 	rm libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
 	```
 
-## Configuration
-
+# Conclusion
+After using the software for around a week, I can safely say that I plan on running my own instance for a while. The fediverse is some of the most fun I've had on the internet in years. It's inspired me to look into setting up my own Matrix server, so that I can see what other communities exist in federated networks. I'll be detailing configuration & maintainance of Pleroma in a future blog post, which will be linked here.
 
 # Footnotes
 [^1]: https://ubuntu.com/blog/what-is-an-ubuntu-lts-release
