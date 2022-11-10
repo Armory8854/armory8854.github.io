@@ -1,5 +1,5 @@
 ---
-title: Setting Up Pleroma - Part 1: I Join The Fediverse!
+title: Setting Up Pleroma - Part 1 - I Join The Fediverse!
 layout: default
 date: 2022-11-02
 tags: linux-server fediverse self-hosting
